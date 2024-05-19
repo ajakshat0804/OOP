@@ -1,0 +1,84 @@
+#include <iostream>
+using namespace std;
+
+class Complex {
+private:
+  double real;
+  double imaginary;
+
+public:
+  // Default constructor
+  Complex() {
+    real = 0;
+    imaginary = 0;
+  }
+
+  // Parameterized constructor
+  Complex(double real, double imaginary) {
+    this->real = real;
+    this->imaginary = imaginary;
+  }
+
+  // Overloaded addition operator
+  Complex operator+(const Complex& other) {
+    Complex result;
+    result.real = this->real + other.real;
+    result.imaginary = this->imaginary + other.imaginary;
+    return result;
+  }
+
+  // Overloaded subtraction operator
+  Complex operator-(const Complex& other) {
+    Complex result;
+    result.real = this->real - other.real;
+    result.imaginary = this->imaginary - other.imaginary;
+    return result;
+  }
+
+  // Overloaded multiplication operator
+  Complex operator*(const Complex& other) {
+    Complex result;
+    result.real = (this->real * other.real) - (this->imaginary * other.imaginary);
+    result.imaginary = (this->real * other.imaginary) + (this->imaginary * other.real);
+    return result;
+  }
+
+  // Overloaded division operator
+  Complex operator/(const Complex& other) {
+    Complex result;
+    double denominator = other.real * other.real + other.imaginary * other.imaginary;
+    result.real = ((this->real * other.real) + (this->imaginary * other.imaginary)) / denominator;
+    result.imaginary = ((this->imaginary * other.real) - (this->real * other.imaginary)) / denominator;
+    return result;
+  }
+
+  // Friend function to print a complex number
+  friend ostream& operator<<(ostream& out, const Complex& complex) {
+    out << complex.real << " + " << complex.imaginary << "i";
+    return out;
+  }
+};
+
+int main() {
+  // Create two complex numbers
+  Complex c1(2, 3);
+  Complex c2(4, 5);
+
+  // Print the complex numbers
+  cout << "c1 = " << c1 << endl;
+  cout << "c2 = " << c2 << endl;
+
+  // Perform arithmetic operations
+  Complex c3 = c1 + c2;
+  Complex c4 = c1 - c2;
+  Complex c5 = c1 * c2;
+  Complex c6 = c1 / c2;
+
+  // Print the results
+  cout << "c1 + c2 = " << c3 << endl;
+  cout << "c1 - c2 = " << c4 << endl;
+  cout << "c1 * c2 = " << c5 << endl;
+  cout << "c1 / c2 = " << c6 << endl;
+
+  return 0;
+}
