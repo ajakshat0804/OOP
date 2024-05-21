@@ -36,7 +36,7 @@ show (string address)
 
 void display()
 
-{ cout<<"Adityaraj singh tomar"<<endl; cout<<"23100BTCSE14737"<<endl; cout<<"name is="<<name<<endl;
+{ cout<<"Akshat Jain"<<endl; cout<<"23xxxxxxxxxx"<<endl; cout<<"name is="<<name<<endl;
 
 cout<<"id is="<<id<<endl;
 
